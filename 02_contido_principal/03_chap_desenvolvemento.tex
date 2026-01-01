@@ -1,0 +1,61 @@
+\chapter{Desenvolvemento da práctica}
+\label{chap:actividades}
+
+\lettrine{E}{n} esta sección se describirá detalladamente el desarrollo de las actividades realizadas durante las prácticas. Se incluirán referencias a las tecnologías descritas anteriormente.
+
+\section{Actividades realizadas}\label{sec:desenvolvemento}
+
+\subsection{Actividad 1: Familiarización con el problema}\label{subsec:actividade1}
+
+\subsubsection{Código inicial (5 días)}\label{subsubsec:init}
+
+La primera tarea que tuve que realizar fue enterarme de qué hacía el pequeño repositorio que me proporcionaron la primera semana en la empresa. Otros miembros del equipo habían preparado hace varios meses un pequeño prototipo del sistema para una demo, y ese sería mi punto de partida. 
+
+Dediqué mis primeros días a leer, ejecutar y tratar de entender el código (además de completar el procedimiento de \textit{onboarding} de la empresa). Me di cuenta de que se podía usar una multitud de modelos, y decidí evaluarlos para ver cuáles serían utilizados en la versión definitiva.
+
+\subsubsection{Papers (3 días)}\label{subsubsec:papers}
+
+También dediqué varíos días a leer \textit{papers} sobre el tema, porque no conocía las técnicas \textit{state-of-the-art} de \textit{image retrieval}. Aquí descubrí multitud de modelos, técnicas y conceptos que no conocía de antemano.
+
+\subsection{Actividad 2: \textit{Framework} de evaluación}\label{subsec:actividade2}
+
+\subsubsection{Datasets (4 días)}\label{subsubsec:datasets}
+
+Para evaluar los distintos modelos necesitaba un dataset de imágenes duplicadas/casi duplicadas. Lo más cómodo era que estuviese etiquetado, pero también me servía un dataset no etiquetado pequeño donde fuese factible etiquetarlo a mano yo mismo.
+
+El primer dataset que utilicé es uno que aparece en multitud de \textit{papers}: UKBENCH \cite{ukb}. Lo descargué de una web de archivo\footnote{https://archive.org/details/ukbench} porque la fuente original ya no está disponible. Está compuesto de 2550 grupos de 4 imágenes, que son fotografías de objetos cotidianos tomadas desde ángulos ligeramente distintos.
+
+\begin{figure}[hp!] 
+  \centering
+  \includegraphics[width=0.65\textwidth]{04_imaxes/ejemplo_ukbench.png}
+  \caption{Ejemplo de muestras del dataset UKBENCH}
+  \label{fig:ukb}
+\end{figure}
+
+El único inconveniente de este dataset es que es demasiado genérico para el caso de uso del sistema. Las imágenes caen en todo tipo de categorías: muebles, juguetes, plantas, personas, etc. Es por esto que decidí buscar otro dataset más ajustado a la temática de la práctica (que no revelaré por el acuerdo de confidencialidad). Después de buscar largo y tendido, encontré uno de 4000 imágenes, con el único inconveniente de que tuve que etiquetar manualmente en un subconjunto de 1000 cuáles eran duplicadas y cuáles no.
+
+\subsubsection{Evaluación (3 días)}\label{subsubsec:eval}
+
+En ambos datasets evalué los modelos que se listaban en el repositorio inicial. Para cada modelo, para cada imagen, buscaba las k más similares en la BBDD (todo el dataset) y el modelo debía encontrar las otras imágenes que tenemos etiquetadas como duplicadas.
+
+\subsubsection{Interpretación de resultados (3 días)}\label{subsubsec:results}
+
+Antes siquiera de buscar el segundo dataset, podía apreciar fácilmente cómo algunos modelos eran mucho mejores que otros. Alexnet destacaba por encima de GoogleNet, Densenet-121 y demás a pesar de ser el más antiguo y el más ligero de todos (\cite{krizhevsky2012imagenet}). CLIP \ref{subsec:tecnoloxia4} era ligeramente mejor que Alexnet, pero también era considerablemente más lento.
+
+Al evaluar en el dataset de la temática específica, los resultados eran parecidos. Alexnet y CLIP eran los claros ganadores. Fue durante esta fase cuando me planteé buscar un modelo más cercano al \textit{SOTA} para ver si nos podía aportar mejor rendimiento, y fue aquí donde encontré Siglip2. Siglip2 resultó ser más lento aún que CLIP, pero también presentaba métricas superiores. 
+
+\subsubsection{Soluciones alternativas (4 días)}\label{subsubsec:results}
+
+Mi equipo había desarrollado un prototipo alternativo para aquella demo en el pasado, una solución basada en \textit{deep learning} diferente a la que estaba desarrollando yo. También evaluamos esta opción en los mismos datasets, pero resultó ser inferior y menos escalable por lo que terminamos descartándola.
+
+Además, durante mi lectura de \textit{papers} inicial \ref{subsubsec:papers} había aprendido sobre varias técnicas sin \textit{deep learning} para búsqueda de imágenes duplicadas. Estos sistemas empleaban \textit{hashing} u otras técnicas de visión artificial como FFT, y efectivamente presentaban resultados muy competentes y operaban a velocidades récord. El factor que nos hizo descartar estos métodos fue que que solo sirven para duplicados exactos. En nuestro caso de uso sabríamos que tendríamos duplicados parciales (por ejemplo, fotos de un objeto desde ángulos distintos como en UKBENCH), y ahí estas técnicas dejarían de funcionar.
+
+\subsection{Actividad 3: Integración}\label{subsec:actividade3}
+
+\subsubsection{Documentación (2 días)}\label{subsubsec:results}
+
+La mayoría del código ya se fue documentando según se añadía, tanto \textit{docstrings} como comentarios de línea para aclaraciones puntuales. Aún así, al final terminé de documentar algún segmento que faltaba. Adicionalmente, modifiqué el README para incluir todo tipo de detalles sobre configuración, información y ejecución del proyecto, además de imágenes con ejemplos. Todo esto asegura que el proyecto está en condiciones para cualquier desarrollador que contribuya en el futuro.
+
+\subsubsection{Preparar y construir el paquete (1 día)}\label{subsubsec:results}
+
+Una vez terminada una versión inicial del sistema, empezamos a integrarlo con el resto de código de la empresa. Lo único que tuve que hacer fue estructurar adecuadamente el código como un módulo con un \lstinline{__init__.py} que recoja los nombres de los métodos principales y ejecutar \lstinline{uv build}. 
