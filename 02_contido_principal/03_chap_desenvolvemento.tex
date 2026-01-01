@@ -44,7 +44,7 @@ Antes siquiera de buscar el segundo dataset, podía apreciar fácilmente cómo a
 
 Al evaluar en el dataset de la temática específica, los resultados eran parecidos. Alexnet y CLIP eran los claros ganadores. Fue durante esta fase cuando me planteé buscar un modelo más cercano al \textit{SOTA} para ver si nos podía aportar mejor rendimiento, y fue aquí donde encontré Siglip2. Siglip2 resultó ser más lento aún que CLIP, pero también presentaba métricas superiores. 
 
-\subsubsection{Soluciones alternativas (4 días)}\label{subsubsec:results}
+\subsubsection{Soluciones alternativas (4 días)}\label{subsubsec:alt_solutions}
 
 Mi equipo había desarrollado un prototipo alternativo para aquella demo en el pasado, una solución basada en \textit{deep learning} diferente a la que estaba desarrollando yo. También evaluamos esta opción en los mismos datasets, pero resultó ser inferior y menos escalable por lo que terminamos descartándola.
 
@@ -52,10 +52,10 @@ Además, durante mi lectura de \textit{papers} inicial \ref{subsubsec:papers} ha
 
 \subsection{Actividad 3: Integración}\label{subsec:actividade3}
 
-\subsubsection{Documentación (2 días)}\label{subsubsec:results}
+\subsubsection{Documentación (2 días)}\label{subsubsec:docs}
 
 La mayoría del código ya se fue documentando según se añadía, tanto \textit{docstrings} como comentarios de línea para aclaraciones puntuales. Aún así, al final terminé de documentar algún segmento que faltaba. Adicionalmente, modifiqué el README para incluir todo tipo de detalles sobre configuración, información y ejecución del proyecto, además de imágenes con ejemplos. Todo esto asegura que el proyecto está en condiciones para cualquier desarrollador que contribuya en el futuro.
 
-\subsubsection{Preparar y construir el paquete (1 día)}\label{subsubsec:results}
+\subsubsection{Preparar y construir el paquete (1 día)}\label{subsubsec:build}
 
 Una vez terminada una versión inicial del sistema, empezamos a integrarlo con el resto de código de la empresa. Lo único que tuve que hacer fue estructurar adecuadamente el código como un módulo con un \lstinline{__init__.py} que recoja los nombres de los métodos principales y ejecutar \lstinline{uv build}. 

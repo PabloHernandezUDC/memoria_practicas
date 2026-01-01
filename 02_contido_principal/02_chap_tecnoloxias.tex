@@ -17,12 +17,12 @@ Existen varias plataformas de \textit{hosting} de repositorios de Git como Githu
 
 Jira \cite{Jira_homepage} es una aplicación para gestión de proyectos donde un equipo de desarrolladores puede crear y administrar tareas enfocadas dentro del marco del desarrollo ágil de software \cite{TheAgileAlliance_2001}. Mi equipo utilizaba Jira para plasmar todas las tareas pendientes del proyecto y los estados en los que podían encontrarse: \textit{To-Do}, \textit{In Progress}, \textit{To Review} y \textit{Completed}.
 
-\begin{figure}[hp!] 
-  \centering
-  \includegraphics[width=0.65\textwidth]{04_imaxes/ejemplo_jira.png}
-  \caption{Ejemplo de un tablón de tareas de Jira}
-  \label{fig:jira}
-\end{figure}
+% \begin{figure}[hp!] 
+%   \centering
+%   \includegraphics[width=0.65\textwidth]{04_imaxes/ejemplo_jira.png}
+%   \caption{Ejemplo de un tablón de tareas de Jira}
+%   \label{fig:jira}
+% \end{figure}
 
 No conocía esta tecnología, porque durante el grado habíamos usado otra herramienta \cite{Taiga} para gestionar los \textit{Sprints}, pero claramente resultó útil para orquestar el flujo de trabajo de un equipo de más de 10 personas.
 
@@ -44,13 +44,10 @@ El modelo Siglip2 fue lanzado por Google en 2025 \cite{tschannen2025siglip2multi
 uv \cite{Astral_2025} es una herramienta ligera escrita en Rust para gestionar proyectos de Python. En el proyecto utilizamos esta tecnología para gestionar las dependencias y compilar el paquete.
 
 \begin{lstlisting}[language=sh]
-# crear .venv y sincronizar dependencias existentes
+# crear .venv (si no existe) y sincronizar dependencias existentes
 uv sync
 
-# añadir dependencia
-uv add numpy
-
-# ejecutar script dentro de .venv
+# ejecutar script dentro de venv
 uv run script.py
 
 # compilar proyecto
