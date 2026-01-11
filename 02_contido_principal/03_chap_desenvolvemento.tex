@@ -36,7 +36,7 @@ El único inconveniente de este dataset es que es demasiado genérico para el ca
 
 \subsubsection{Evaluación (3 días)}\label{subsubsec:eval}
 
-En ambos datasets evalué los modelos que se listaban en el repositorio inicial. Para cada modelo, para cada imagen, buscaba las k más similares en la BBDD (todo el dataset) y el modelo debía encontrar las otras imágenes que tenemos etiquetadas como duplicadas.
+En ambos datasets evalué los modelos que se listaban en el repositorio inicial. Para cada modelo, para cada imagen, buscaba las top-k más similares en la BBDD (todo el dataset) y el modelo debía encontrar  y marcar como duplicadas las otras imágenes del grupo. En cuanto a las métricas, calculábamos el porcentaje de veces que el modelo marca como duplicadas exactamente las imágenes relevantes, ni más ni menos. También empleábamos Recall@K para ver si el modelo encontraba siquiera las instancias relevantes en su top-k.
 
 \subsubsection{Interpretación de resultados (3 días)}\label{subsubsec:results}
 
