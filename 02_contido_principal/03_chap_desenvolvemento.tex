@@ -9,9 +9,9 @@
 
 \subsubsection{Código inicial (5 días)}\label{subsubsec:init}
 
-La primera tarea que tuve que realizar fue enterarme de qué hacía el pequeño repositorio que me proporcionaron la primera semana en la empresa. Otros miembros del equipo habían preparado hace varios meses un pequeño prototipo del sistema para una demo, y ese sería mi punto de partida. 
+La primera tarea que tuve que realizar fue enterarme de qué hacía el pequeño repositorio que me proporcionaron la primera semana en la empresa. Otros miembros del equipo habían preparado hace varios meses un pequeño prototipo del sistema para una demo, y ese era mi punto de partida. 
 
-Dediqué mis primeros días a leer, ejecutar y tratar de entender el código (además de completar el procedimiento de \textit{onboarding} de la empresa). Me di cuenta de que se podía usar una multitud de modelos, y decidí evaluarlos para ver cuáles serían utilizados en la versión definitiva.
+Dediqué mis primeros días a leer, ejecutar y tratar de entender el código (además de completar el procedimiento de \textit{onboarding} de la empresa). Me di cuenta de que se podía usar una multitud de modelos, y decidí evaluarlos para ver cuáles usar en la versión definitiva.
 
 \subsubsection{\textit{Papers} (3 días)}\label{subsubsec:papers}
 
@@ -42,13 +42,13 @@ En ambos datasets evalué los modelos que se listaban en el repositorio inicial.
 
 Antes siquiera de buscar el segundo dataset, podía apreciar fácilmente cómo algunos modelos eran mucho mejores que otros. Alexnet destacaba por encima de GoogleNet, Densenet-121 y demás a pesar de ser el más antiguo y el más ligero de todos (\cite{krizhevsky2012imagenet}). CLIP \ref{subsec:tecnoloxia4} era ligeramente mejor que Alexnet, pero también era considerablemente más lento.
 
-Al evaluar en el dataset de la temática específica, los resultados eran parecidos. Alexnet y CLIP eran los claros ganadores. Fue durante esta fase cuando me planteé buscar un modelo más cercano al \textit{SOTA} para ver si nos podía aportar mejor rendimiento, y fue aquí donde encontré Siglip2. Siglip2 resultó ser más lento aún que CLIP, pero también presentaba métricas superiores. 
+Al evaluar en el dataset de la temática específica, los resultados eran parecidos. Alexnet y CLIP eran los claros ganadores. Fue durante esta fase cuando me planteé buscar un modelo "más \textit{SOTA}" para ver si aportaba mejor rendimiento, y fue aquí donde encontré Siglip2. Siglip2 resultó ser más lento aún que CLIP, pero también presentaba métricas superiores. 
 
 \subsubsection{Soluciones alternativas (4 días)}\label{subsubsec:alt_solutions}
 
-Mi equipo había desarrollado un prototipo alternativo para aquella demo en el pasado, una solución basada en \textit{deep learning} diferente a la que estaba desarrollando yo. También evaluamos esta opción en los mismos datasets, pero resultó ser inferior y menos escalable por lo que terminamos descartándola.
+Mi equipo había desarrollado un prototipo alternativo en el pasado (también basada en \textit{deep learning}) para aquella demo. También evaluamos esta opción en los mismos datasets, pero resultó ser inferior y menos escalable, por lo que terminamos descartándola.
 
-Además, durante mi lectura de \textit{papers} inicial \ref{subsubsec:papers} había aprendido sobre varias técnicas sin \textit{deep learning} para búsqueda de imágenes duplicadas. Estos sistemas empleaban \textit{hashing} u otras técnicas de visión artificial como FFT, y efectivamente presentaban resultados muy competentes y operaban a velocidades récord. El factor que nos hizo descartar estos métodos fue que que solo sirven para duplicados exactos. En nuestro caso de uso sabríamos que tendríamos duplicados parciales (por ejemplo, fotos de un objeto desde ángulos distintos como en UKBENCH), y ahí estas técnicas dejarían de funcionar.
+Además, durante mi lectura de \textit{papers} inicial \ref{subsubsec:papers} había aprendido sobre otras técnicas sin \textit{deep learning}. Algunos sistemas empleaban \textit{hashing} u FFT, y presentaban resultados muy competentes a velocidades récord. Lo que nos hizo descartar estos métodos fue que solo sirven para duplicados exactos. En nuestro caso de uso sabríamos que habría duplicados parciales (ej.: fotos de un objeto desde ángulos distintos), y ahí estas técnicas dejarían de funcionar.
 
 \subsection{Actividad 3: Integración}\label{subsec:actividade3}
 
